@@ -18,11 +18,13 @@ label define race_label 1 "white" 2 "black" 3 "hispanic" 4 "other"
 label values race race_label
 logistic suicide ib1.race
 
+logistic suicide i.irmarit
+
 gen income_high_low = 1 if income ==1 
 replace income_high_low = 2 if income > 1
 label define income_label 1 "less than 20K" 2 "more than 20K"
 label values income_high_low income_label
-logistic suicide i.income_high_low
+logistic suicide ib2.income_high_low
 
 gen sexual_identity = 1 if sexident==1
 replace sexual_identity =2 if sexident ==2
@@ -31,7 +33,11 @@ label define sexual_identity_label 1 "Heterosexual" 2 "Lesbian or Gay" 3 "Bisexu
 label values sexual_identity sexual_identity_label
 logistic suicide i.sexual_identity
 
-logistic suicide i.amdeyr
-logistic suicide i.opioid i.NEWRACE2 i.irsex i.CATAG2 i.income i.amdeyr i.sexident
+logistic suicide ib2.amdeyr
+
+logistic suicide i.opioid
+
+logistic suicide  ib1.race ib2.irsex ib1.CATAG2 i.irmarit ib2.income_high_low i.sexual_identity ib2.amdeyr i.opioid
+
 
 
