@@ -20,6 +20,10 @@ logistic suicide ib1.race
 
 logistic suicide i.irmarit
 
+logistic suicide ib3.eduhighcat
+
+logistic suicide i.IRWRKSTAT18
+
 gen income_high_low = 1 if income ==1 
 replace income_high_low = 2 if income > 1
 label define income_label 1 "less than 20K" 2 "more than 20K"
@@ -37,7 +41,7 @@ logistic suicide ib2.amdeyr
 
 logistic suicide i.opioid
 
-logistic suicide  ib1.race ib2.irsex ib1.CATAG2 i.irmarit ib2.income_high_low i.sexual_identity ib2.amdeyr i.opioid
+logistic suicide  ib1.race ib2.irsex ib1.CATAG2 i.irmarit ib3.eduhighcat i.IRWRKSTAT18 ib2.income_high_low i.sexual_identity ib2.amdeyr i.opioid
 
 
 
